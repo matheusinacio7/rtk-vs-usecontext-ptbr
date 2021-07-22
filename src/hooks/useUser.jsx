@@ -4,7 +4,7 @@ const UserContext = createContext({});
 
 export function UserProvider({ children }) {
   const [name, setName] = useState('');
-  const [githubUsername, setGithubUsername] = useState('');
+  const [githubUsername, setGithubUsername] = useState(null);
   const [highestCount, setHighestCount] = useState(0);
 
   // wrappers para poder adicionar funcionalidade caso necessario sem modificar a interface;
