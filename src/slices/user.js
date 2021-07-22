@@ -6,24 +6,26 @@ const initialState = {
   highestCount: 0,
 };
 
+const reducers = {
+  updateName: (state, { payload }) => {
+    state.name = payload;
+  },
+
+  updateGithubUsername: (state, { payload }) => {
+    state.githubUsername = payload;
+  },
+
+  updateHighestCount: (state, { payload }) => {
+    if (payload > state.highestCount) {
+      state.highestCount = payload;
+    }
+  },
+}
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-    updateName: (state, { payload }) => {
-      state.name = payload;
-    },
-
-    updateGithubUsername: (state, { payload }) => {
-      state.githubUsername = payload;
-    },
-
-    updateHighestCount: (state, { payload }) => {
-      if (payload > state.highestCount) {
-        state.highestCount = payload;
-      }
-    },
-  },
+  reducers,
 });
 
 export const { updateName, updateGithubUsername, updateHighestCount } = userSlice.actions;

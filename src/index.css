@@ -113,3 +113,8 @@ form > label {
 form > label > input {
   flex-grow: 1;
 }
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+}
