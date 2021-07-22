@@ -5,8 +5,11 @@ import App from './App';
 import { UserProvider } from './hooks/useUser'
 import { CounterProvider } from './hooks/useCounter';
 
-// Nota: Context ao redor de toda a aplicação geralmente é uma má ideia.
-// Na vida real, precisaríamos pensar em como colocar cada contexto ao redor de cada grupo de componentes...
+/* Nota: Context ao redor de toda a aplicação
+    geralmente é uma má ideia.
+  Na vida real, precisaríamos pensar em como
+    colocar cada contexto ao redor de cada grupo
+    de componentes... */
 
 ReactDOM.render(
   <React.StrictMode>
