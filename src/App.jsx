@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateHighestCount, updateName, updateGithubUsername } from './slices/user';
-import { increment, decrement } from './slices/counter';
+import useCounter from './hooks/useCounter';
+import useUser from './hooks/useUser';
 import Layout from './components/Layout';
 
 function App() {
-  const count =  useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
+  const { updateName, updateGithubUsername, updateHighestCount } = useUser();
+  const { count, increment, decrement } = useCounter();
+
   const [name, setName] = useState('');
   const [githubUsername, setGithubUsername] = useState('');
 
   useEffect(() => {
-    dispatch(updateHighestCount(count));
-  }, [dispatch, count]);
+    updateHighestCount(count);
+  }, [count, updateHighestCount]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,10 +21,10 @@ function App() {
 
     switch (id) {
       case 'name-form':
-        dispatch(updateName(name));
+        updateName(name);
         break;
       case 'github-username-form':
-        dispatch(updateGithubUsername(githubUsername));
+        updateGithubUsername(githubUsername);
         break;
       default:
         break;
@@ -38,8 +38,8 @@ function App() {
 
         <section className="counter-controls-section" aria-label="counter-controls">
           <div>
-            <button onClick={ () => dispatch(increment()) }>Aumentar</button>
-            <button onClick={ () => dispatch(decrement()) }>Diminuir</button>
+            <button onClick={ () => increment() }>Aumentar</button>
+            <button onClick={ () => decrement() }>Diminuir</button>
           </div>
         </section>
 
